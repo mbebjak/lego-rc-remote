@@ -1,4 +1,3 @@
-#include "api/Common.h"
 #include "SteeringControl.h"
 #include "debug.h"
 
@@ -63,21 +62,33 @@ void SteeringControl::loop() {
 }
 
 void SteeringControl::steer() {
-  if (newPosition == currentPosition) {
+  int positionToSet;
+  if (abs(newPosition) < 5) {
+    positionToSet = 0;
+  } else if (newPosition < -95) {
+    positionToSet = -100;
+  } else if (newPosition > 95) {
+    positionToSet = 100;
+  } else if (abs(newPosition-currentPosition) < 5) {
     return;
-  }        
-  currentPosition = newPosition;
+  } else {
+    positionToSet = newPosition;
+  }
+  if (currentPosition == positionToSet) {
+    return;
+  }
+  currentPosition = positionToSet;
   
   int32_t portPosition = center;
-  if (abs(newPosition) > 5) {
-    if (newPosition < 0) {
-      portPosition = map(newPosition, -100,    0, left,    center);
+  if (abs(positionToSet) > 5) {
+    if (positionToSet < 0) {
+      portPosition = map(positionToSet, -100,    0, left,    center);
     } else {
-      portPosition = map(newPosition,    0,  100, center,  right);
+      portPosition = map(positionToSet,    0,  100, center,  right);
     }
   }
   
-  //DPRINT("Steering position: ");DPRINT(newPosition);DPRINT(" - ");DPRINTLN(portPosition);
+  DPRINT("Steering position: ");DPRINT(positionToSet);DPRINT(" - ");DPRINTLN(portPosition);
   port->goToPositionAndHold(portPosition, 80, 80, false, false);
 }
 

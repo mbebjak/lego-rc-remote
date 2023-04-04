@@ -1,7 +1,7 @@
-#include "BLEDevice.h"
 #ifndef _TECHNIC_HUB_H_
 #define _TECHNIC_HUB_H_
 
+#include "BLEDevice.h"
 #include <ArduinoBLE.h>
 #include "debug.h"
 
