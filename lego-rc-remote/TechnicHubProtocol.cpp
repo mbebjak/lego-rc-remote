@@ -16,7 +16,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "TechnicHub.h"
+#include "TechnicHubProtocol.h"
 
 TechnicHubMessageBuilder::TechnicHubMessageBuilder() {
     memset(TechnicHubMessageBuilder::buffer, 0, sizeof(TechnicHubMessageBuilder::buffer));
