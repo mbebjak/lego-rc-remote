@@ -20,5 +20,4 @@ Power on your remote (Arduino Board). The easiest way might be to supply it via 
 The remote will send some setup commands to the hub so the two motors on port A and B get mapped to one virtual port. For the last step the steering range and the central position for the steering will be initialized. 
 
 ## Useful Links
-- [LEGO BLE Protocol](https://lego.github.io/lego-ble-wireless-protocol-docs/index.html#document-index)  
-- If you use Microsoft Edge as your preferred browser use `edge://bluetooth-internals/#adapter` in case of Google Chrome `chrome://bluetooth-internals/#adapter` to investigate your bluetooth peripheral
+- [LEGO BLE Protocol](https://lego.github.io/lego-ble-wireless-protocol-docs/index.html#document-index)
