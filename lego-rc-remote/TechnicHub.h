@@ -40,7 +40,7 @@ class TechnicHub {
 
     bool sendMessage(uint8_t message);
 
-    void initVirtualPort(uint8_t port1, uint8_t port2);
+    SimplePort* initABVirtualPort();
 
     SimplePort* initSimplePort(uint8_t port);
 };

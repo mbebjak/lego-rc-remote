@@ -86,13 +86,14 @@ bool TechnicHub::isConnected() {
   return hub != NULL && hub.connected();
 }
 
-void TechnicHub::initVirtualPort(uint8_t port1, uint8_t port2) {
+SimplePort* TechnicHub::initABVirtualPort() {
   sendMessage(
     TechnicHubMessageBuilder::createVirtualPortConnect(
-      port1,
-      port2
+      PORT_A,
+      PORT_B
     )
   );
+  return new SimplePort(*this, 16);
 }
 
 SimplePort* TechnicHub::initSimplePort(uint8_t port) {

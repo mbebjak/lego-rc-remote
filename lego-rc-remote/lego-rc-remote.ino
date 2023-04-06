@@ -17,8 +17,14 @@ Potentiometer steeringPot(
 
 Potentiometer powerPot(
   A7,
-  210, 405, 670
+  120, 384, 580
 );
+
+//const String hubName = "Technic Hub";
+const String hubName = "Zetros Hub";
+
+const int steeringInversion = -1;
+const int powerInversion = 1;
 
 const uint8_t steeringReadCount = 10;
 const uint8_t powerReadCount = 5;
@@ -34,11 +40,12 @@ void setup() {
     while (1);
   }
 
-  DPRINTLN("Scanning for Technic Hub");
+  scanForHub();
+}
 
-  // start scanning for peripheral
-  BLE.scanForName("Technic Hub");
-
+void scanForHub() {
+  DPRINT("Scanning for ");DPRINTLN(hubName);
+  BLE.scanForName(hubName);
 }
 
 void loop() {
@@ -51,25 +58,22 @@ void loop() {
     return;
   }  
 
-  // DPRINTLN("Initializing virtual port");
-  // hub.initVirtualPort(PORT_A, PORT_B);
-
   DPRINTLN("Initializing ...");
   SteeringControl steeringControl(
-    hub.initSimplePort(PORT_C)
+    hub.initSimplePort(PORT_D)
   );
   PowerControl powerControl(
-    hub.initSimplePort(PORT_D)
+    hub.initABVirtualPort()
   );
 
   while (hub.isConnected()) {
     if (steeringControl.isReady()) {
       int steeringInput = steeringPot.getValue(steeringReadCount);
       int powerInput = powerPot.getValue(powerReadCount);
-      DPRINT("INPUT steering: ");DPRINT(steeringInput);DPRINT(" power: ");DPRINTLN(powerInput);
+      //DPRINT("INPUT steering: ");DPRINT(steeringInput);DPRINT(" power: ");DPRINTLN(powerInput);
 
-      steeringControl.setPosition(steeringInput);
-      powerControl.setPower(powerInput);
+      steeringControl.setPosition(steeringInput * steeringInversion);
+      powerControl.setPower(powerInput * powerInversion);
     }
 
     hub.loop();
@@ -79,5 +83,5 @@ void loop() {
     delay(100);
   }
 
-  BLE.scanForName("Technic Hub");
+  scanForHub();
 }

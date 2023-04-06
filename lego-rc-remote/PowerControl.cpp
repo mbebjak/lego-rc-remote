@@ -1,4 +1,5 @@
 #include "PowerControl.h"
+#include "debug.h"
 
 PowerControl::PowerControl(SimplePort* port) {
   this->port = port;
