@@ -1,5 +1,0 @@
-{
-    "sketch": "sample.ino",
-    "board": "arduino:mbed:nano33ble",
-    "port": "COM11"
-}
