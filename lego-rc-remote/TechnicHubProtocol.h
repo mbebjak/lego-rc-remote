@@ -16,8 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
     
-#ifndef _TECHNIC_HUB_H_
-#define _TECHNIC_HUB_H_
+#ifndef _TECHNIC_HUB_PROTOCOL_H_
+#define _TECHNIC_HUB_PROTOCOL_H_
 
 #include <Arduino.h>
 
