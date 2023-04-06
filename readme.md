@@ -5,7 +5,7 @@ This is an arduino sketch to control the assembled LEGO Technic vehicles via the
 ## Requirements
 - [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 - [Arduino NANO 33 BLE Sense](https://store.arduino.cc/arduino-nano-33-ble-sense) ([Getting Started Guide](https://www.arduino.cc/en/Guide/NANO33BLESense))
-- [RC controller]()
+- [RC controller](https://www.rcprofi.sk/engine-diel-c-2-ovladac)
 
 ## Installation
 Just upload the sketch with your preferred IDE to the board. If you want to have debug information you might uncomment the `#define DEBUG` line in debug.h. If you do so and upload it to the remote it will wait after powered on until a serial terminal is connected.
